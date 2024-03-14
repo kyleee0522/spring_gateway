@@ -1,0 +1,28 @@
+#spring:
+#  profiles:
+#    active: prd
+#  cloud:
+#    gateway:
+#      routes:
+#        - id: login_com
+#          predicates:
+#            - name: Path
+#              args:
+#                pattern: /api/login
+#          uri: http://localhost:8081
+#        - id: login_qur
+#          predicates:
+#            - name: Path
+#              args:
+#                pattern: /api/login
+#          uri: http://localhost:8082
+#        - id: get
+#          predicates:
+#            - name: Get
+#              method: Get
+#          uri: http://localhost:8082
+#        - id: post
+#          predicates:
+#            - name: Path
+#              method: Post
+#          uri: http://localhost:8081

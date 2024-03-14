@@ -1,0 +1,38 @@
+server:
+  port: 8080
+
+# 스프링 프로파일 설정은 현재 비활성화 되어 있습니다.
+# 필요에 따라 주석을 해제하고 적절한 프로파일을 활성화하세요.
+#spring:
+#  profiles:
+#    active: prd
+
+management:
+  endpoint:
+    gateway:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: gateway
+
+# JWT 관련 설정
+jwt:
+  token-expiration-seconds: 1800
+  secret-key: "dltkdghdltkdghdltkdghdltkdghdltkdghdltkdghdltkdghdltkdghdltkdghdltkdgh"
+  private-key: MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC7UE83Y2gswGvKH2UaVrtzCw7fP2UBgV5i3YleNt4dg/Iv0j2VUm8JWuTVgma+FQWmhknfUaRrqAONcEc03xVcqVmWvd6d1V3xyOez2FnxbPCZwrfqlK1em8ygxcOiDOids25/8X0bk4c0hPFKotyPXf1F0VGFdx1Rm4sYvuf0DI3d27bNtKTaSv59/3QBmU2DA15Y7At+H13huBuwf3ihNjccYPKuMVIuIh/d1zYqGzwOJIv3hxi/nixXye/2mPEdH4dVIPNXx7Rcs1SRQmIhLJJEKzIjON1KAB33Gb34ZS2XjPiRXp6BGfkIHCUeX0dH/UOlk3JdW7O3JpNbmL+rAgMBAAECggEAIp+bpO9ZCDyhMAFRnOa/S2qV2ypKr1aMbdXpWGLn96i2EaTZAUr1f1MvzU+HUkdsffWAnijnLYcm8PP6FYnO1wvupXB/P8l6zgCG47VwGrI6XxGhEVleGojN8EHeAYxFSzEpkbi/mWNRsKGKQHOONWn4MPmaCgOUhcsskOxoz7FZT7Ur3hPYFFbOVUfy8TDY3QWh3AbrZ6wofku8uOrWVQLdZldPwtqT9Jqz6SoWyxQ0G3ZQvzxk+hBvRoEq2tDP751h0bABAtJUGFzHjqrwdEyCPfw/+DoJjdemcTJQxZQcGSeF9peUME/Nk5mu/WJg7kb6oRb3lc1cHjfmofBY0QKBgQDmmRnV+8xvyQlDu2qiZ/LYZR5KSmDKe6IMBwlKlM8gxRgOtcx4Zx8hIiUquJINlBEoEdXTC5cn66cBGJmvHvv5QwBsGKFf9WnDoGlAj/JxwBCwG3+uyTbeN4l8CMT3dIqS2anqmsj2cw0z1nDv5An/uJ+qZx9L6jRDu7CcvnLLnQKBgQDP8pVsm058UpR4cbjdv5vZCMtHKZ6UxEjSqzbYyV2amYZf/wPtvhUiD1r8lkmDQy25i5PSSkqNfsV6pKhiZrAOXs5kVRmzsxt67Y1S3XX/BOiFFKA6sA864T3Hp+bCi1vGCWw5PYPje2PWvyVXe3ogyf1B1pMS8wdGfJ9oT3yJ5wKBgQCUh8b5ar/KvP4Hr59GzpfARJmXFoNzyOCeyKV2cZVcsTcGupjicOG/MMQp2UrSDi5i1eIZlxycrRAcB6FuCBIbAsox1keTjHq8dAV3fYCXPjRBiuTaS2bZCYK37toX3ewoHKVypJKPE5pManLCQesi2OOXGecxucBCZJGk1JMSjQKBgDZed6EIzjGFKdp/6VTZFzdcrEFz6Ul+NIgYSePOalHUmCSbOXy8eSwJlcF6zcerFdZwXvrZf7qVDa7uRDROIvPu58ml0m2Ag8vVNmEXFBXUQ7Mf3HDbvW+omo2MIbJ1203hAtHIeqZMiaMJIQtJdnoCNdwz7QpETn+ob8lHFwm7AoGAFVkVgqNt1TaY3eyq/aY1CslTdZvShM+DbcuWMv9FS3xU/0J29vshqhah6BOgCYLRc2wGABR00mY0idY29fgL6Rs85VKxrFoLlhjDtiR5Gyi/eoXnD5aEmUDLcDW3hnluRLD4UQDRZo5Xzn0C0mfk1tUqApv9ImtvXzvRW9AlNfA=
+
+spring:
+  application:
+    name: gateway-server
+  cloud:
+    gateway:
+      httpclient:
+        wiretap: true  # 클라이언트 <-> 게이트웨이 <-> 다운스트림 서버 요청 및 응답 로깅
+
+# 로깅 레벨 설정
+logging:
+  level:
+    org.springframework.cloud.gateway: debug  # 게이트웨이 서버 디버깅용 로깅 레벨을 trace로 설정
+    reactor.netty: debug  # Reactor Netty 로깅 레벨을 trace로 설정
+    com.kt: debug  # com.kt 패키지에 대한 로깅 레벨을 debug로 설정
